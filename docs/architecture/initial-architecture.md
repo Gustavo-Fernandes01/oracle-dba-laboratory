@@ -124,13 +124,9 @@ The virtual machines will initially use VirtualBox Bridged Networking.
 With Bridged Networking, each virtual machine will appear as an independent
 device on the physical network.
 
-The server IP addresses will be manually configured inside the guest
-operating systems rather than being assigned by VirtualBox.
+The physical network uses the 10.0.0.0/24 subnet.
 
-This configuration allows each virtual machine to obtain its own IP address
-on the physical network.
-
-The initial network model is:
+The initial network configuration is:
 
 | Component | Role | IP Address |
 |---|---|---|
@@ -139,19 +135,20 @@ The initial network model is:
 | VM 01 | Database Server | 10.0.0.254 |
 | VM 02 | Application Server | 10.0.0.253 |
 
-The communication flow is:
+Network parameters:
 
-**Windows 11 Host → Home Router → Virtual Machines**
-
-The Application Server communicates with the Database Server through the
-Oracle Database service.
-
-Static IP addresses will be assigned to the servers.
-
-The addressing strategy is:
-
+- Network: 10.0.0.0/24
+- Subnet Mask: 255.255.255.0
+- Default Gateway: 10.0.0.1
 - Database Server: 10.0.0.254
 - Application Server: 10.0.0.253
+
+The Application Server and Database Server will use manually configured
+addresses to provide predictable connectivity between infrastructure
+components.
+
+The server addresses will be configured inside the guest operating systems.
+VirtualBox will provide network connectivity through the Bridged Adapter.
 
 ---
 
@@ -159,17 +156,10 @@ The addressing strategy is:
 
 The expected application flow is:
 
-    User
-      |
-      v
-    Application Server
-      |
-      | Oracle Database connection
-      v
-    Database Server
-      |
-      v
-    Oracle Database 21c XE
+**User → Application Server → Oracle Database 21c XE**
+
+The Application Server will be the main entry point for application-level
+access.
 
 The Database Server will not be directly exposed to end users.
 Application-level access to the database will be mediated through the
