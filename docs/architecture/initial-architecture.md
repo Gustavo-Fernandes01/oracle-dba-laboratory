@@ -7,7 +7,7 @@ through Oracle VirtualBox virtual machines.
 
 The host system is a Windows 11 Pro workstation with limited hardware
 resources. Therefore, the initial architecture prioritizes simplicity,
-resource efficiency, service separation and the ability to evolve gradually.
+resource efficiency, service separation and gradual evolution.
 
 The infrastructure will use Oracle Linux as the operating system for both
 virtual machines.
@@ -143,7 +143,7 @@ Network parameters:
 - Database Server: 10.0.0.254
 - Application Server: 10.0.0.253
 
-The Application Server and Database Server will use manually configured
+The Database Server and Application Server will use manually configured
 addresses to provide predictable connectivity between infrastructure
 components.
 
@@ -172,7 +172,7 @@ Application Server.
 The initial resource allocation is intentionally conservative.
 
 | Component | CPU | RAM | Storage |
-|-----------|-----|-----|---------|
+|---|---|---|---|
 | Windows 11 Host | 4 cores | 16 GB | SSD/HDD |
 | Database Server | 1 vCPU | 2 GB | 30 GB |
 | Application Server | 2 vCPU | 4 GB | 40 GB |
@@ -258,6 +258,6 @@ after the change.
 
 **Application Server: Oracle Linux**
 
-The architecture is approved for implementation, subject to verification of
-the physical network configuration and final software compatibility
-requirements.
+The architecture is approved for implementation, subject to final
+verification of software compatibility requirements during the
+implementation stage.
