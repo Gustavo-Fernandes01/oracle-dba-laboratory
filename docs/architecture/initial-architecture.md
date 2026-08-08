@@ -121,42 +121,30 @@ The Application Server will be responsible for:
 
 The virtual machines will initially use VirtualBox Bridged Networking.
 
+With Bridged Networking, each virtual machine will appear as an independent
+device on the physical network.
+
+The server IP addresses will be manually configured inside the guest
+operating systems rather than being assigned by VirtualBox.
+
 This configuration allows each virtual machine to obtain its own IP address
 on the physical network.
 
 The initial network model is:
 
-Windows 11 Host
-        |
-        | Physical Network
-        |
-    Home Router
-        |
-  +-----+-----+
-  |           |
-  v           v
- VM 01       VM 02
- Database    Application
- Server      Server
- 10.0.0.254  10.0.0.253
-  |           |
-Oracle DB   APEX/ORDS
+| Component | Role | IP Address |
+|---|---|---|
+| Windows 11 Host | Virtualization Host | 10.0.0.6 |
+| Home Router | Default Gateway | 10.0.0.1 |
+| VM 01 | Database Server | 10.0.0.254 |
+| VM 02 | Application Server | 10.0.0.253 |
 
-The physical network uses the 10.0.0.0/24 subnet.
+The communication flow is:
 
-The initial network configuration is:
+**Windows 11 Host → Home Router → Virtual Machines**
 
-- Network: 10.0.0.0/24
-- Subnet Mask: 255.255.255.0
-- Default Gateway: 10.0.0.1
-- Host: 10.0.0.6
-- Application Server: 10.0.0.253
-- Database Server: 10.0.0.254
-- Broadcast: 10.0.0.255
-
-The Application Server and Database Server will use manually configured
-addresses to provide predictable connectivity between infrastructure
-components.
+The Application Server communicates with the Database Server through the
+Oracle Database service.
 
 Static IP addresses will be assigned to the servers.
 
