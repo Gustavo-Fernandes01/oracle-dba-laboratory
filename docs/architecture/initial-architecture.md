@@ -98,12 +98,11 @@ The second virtual machine will host the application layer.
 ### Main Components
 
 - Oracle APEX 26.1
-- Oracle REST Data Services 25.3
-- Java runtime
+- Oracle REST Data Services 26.1.1+
+- Java 21 LTS
 - Application layer
 
-The exact Java version will be determined during the implementation stage
-according to the compatibility requirements of the selected ORDS version.
+> **Architectural Decision Update:** The initial architecture planned to use ORDS 25.3 and defer the Java version definition. However, to comply with strict compatibility requirements documented by Oracle for APEX 26.1, the stack was officially updated to require **ORDS 26.1.1+** and **Java 21 LTS**.
 
 ### Responsibilities
 
