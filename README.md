@@ -1,42 +1,35 @@
-# Oracle DBA Laboratory
+# 🏛️ Oracle DBA & Data Engineering Laboratory
 
-A hands-on laboratory focused on Oracle Database administration,
-SQL, performance, backup and recovery, monitoring, networking,
-ORDS/APEX and infrastructure automation.
+A repository dedicated to building, testing, measuring, and documenting a professional, reproducible, and scalable data infrastructure.
 
-## Objectives
+## 🏗️ Laboratory Architecture (Phase 01)
 
-This repository documents practical experiments and labs
-performed while studying Oracle Database Administration and
-Data Infrastructure.
+| Server | OS | Resources | Role | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **`LAB-DB-01`** | Oracle Linux 8.10 (UEK R7) | 1 vCPU / 2 GB RAM | Oracle Database 21c XE | 🟢 Operational |
+| **`LAB-APP-01`** | Oracle Linux 8.10 (UEK R7) | 2 vCPU / 4 GB RAM | Java 21 / ORDS 26.1.1+ / APEX 26.1 | 🟡 Planned |
 
-## Topics
+---
 
-- Oracle Database Administration
-- SQL
-- Database Performance
-- Backup & Recovery
-- Users & Security
-- Monitoring
-- Networking
-- ORDS & APEX
-- Infrastructure Automation
-
-## Environment
-
-> Documentation in progress.
-
-## Repository Structure
+## 📂 Repository Structure
 
 ```text
-01-environment
-02-installation
-03-database-configuration
-04-users-and-security
-05-sql-and-data
-06-performance
-07-backup-and-recovery
-08-monitoring
-09-networking
-10-ords-apex
-11-automation
+oracle-dba-laboratory/
+├── README.md
+├── docs/
+│   ├── architecture/      # Architecture decisions and OS definitions
+│   ├── infrastructure/    # Hardware, VMs, and network mapping
+│   ├── database/          # Installation guides, tuning, and DB routines
+│   ├── decisions/         # Architectural Decision Records (ADRs)
+│   ├── experiments/       # Performance, load tests, and metrics
+│   └── operations/        # Operational manuals and runbooks
+├── scripts/               # Operational scripts (Bash/SQL)
+└── automation/            # Automation playbooks (Ansible/Terraform)
+```
+
+## 🔗 Quick Reference Documentation
+* [Project Definition](docs/architecture/project-definition.md)
+* [Operating System Selection](docs/architecture/operating-system-selection.md)
+* [Initial Architecture](docs/architecture/initial-architecture.md)
+* [LAB-DB-01 Infrastructure](docs/infrastructure/lab-db-01.md)
+* [Oracle 21c XE Setup & Validation](docs/database/oracle-21c-xe-setup.md)
