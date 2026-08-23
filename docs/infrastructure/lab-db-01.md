@@ -1,33 +1,37 @@
-# 🖥️ LAB-APP-01 — Application Server Infrastructure
+# 🖥️ LAB-DB-01 — Database Server Infrastructure
 
 ## 1. Overview
-This virtual machine serves as the Application Server defined in the initial architecture. It is designed to host the application layer completely separated from the database layer to prevent resource contention.
+Dedicated server for the laboratory's Oracle Database. Designed to ensure resource isolation, data persistence, and reproducibility.
 
 | Parameter | Configuration |
 | :--- | :--- |
 | **Host OS** | Windows 11 Pro |
 | **Hypervisor** | Oracle VirtualBox |
 | **Guest OS** | Oracle Linux Server 8.10 x86_64 |
-| **vCPU / RAM** | 2 vCPU / 4 GB RAM |
-| **Storage** | 40 GB |
-| **Network** | Bridged Adapter |
-| **IP / Subnet** | `10.0.0.253/24` (Gateway `10.0.0.1`) |
-| **Hostname** | `LAB-APP-01` |
-| **Security** | SELinux: Enforcing \| `firewalld`: Active (Only default SSH validated) |
+| **Kernel** | Unbreakable Enterprise Kernel (UEK R7) |
+| **vCPU / RAM** | 1 vCPU / 2 GB RAM |
+| **Storage / Swap** | 30 GB (SATA HDD) / ~2 GB Swap |
+| **Network** | Bridged Adapter (`enp0s3`) |
+| **IP / Subnet** | `10.0.0.254/24` (Gateway `10.0.0.1`) |
+| **Hostname** | `LAB-DB-01` |
+| **Security** | SELinux: Enforcing \| `firewalld`: Active \| SSH: Enabled |
 
-## 2. Current Status & Application Stack
-**Infrastructure operational / Application stack pending.**
-* **Java:** Java 21 LTS (Planned)
-* **ORDS:** ORDS 26.1.1+ (Planned)
-* **APEX:** Oracle APEX 26.1 (Planned)
+## 2. Oracle Database 21c XE
+* **Version:** Oracle Database 21c Express Edition x86_64
+* **ORACLE_SID:** `XE`
+* **ORACLE_HOME:** `/opt/oracle/product/21c/dbhomeXE`
+* **ORACLE_BASE:** `/opt/oracle`
+* **Configured Ports:** `1521` (TCP Listener) | `5500` (Local EM Express)
+* **Topology:** CDB (`XE`) with default PDB (`XEPDB1`)
 
-*(Note: These components are planned but NOT yet implemented. No application ports have been opened yet).*
-
-## 3. Connectivity Validation
-Network connectivity between the Application Server and the Database Server has been successfully validated via ping:
-* `LAB-APP-01 (10.0.0.253)` ➔ `LAB-DB-01 (10.0.0.254)`: **SUCCESS**
-
-*(Note: This validates OS-level infrastructure connectivity only. Application-level database connections are not yet established).*
+## 3. System and Connectivity Validation
+* `XE` instance in `OPEN` state and database in `READ WRITE` mode.
+* `XEPDB1` container in `READ WRITE` state.
+* Listener is active and successfully registering the `XE`, `XEXDB`, and `xepdb1` services.
+* Local connection `sqlplus / as sysdba` validated via the `oracle` OS user.
+* Remote/Listener connection `system@localhost:1521/xepdb1` validated.
+* `oracle-xe-21c` systemd service configured for automatic startup on boot.
 
 ## 4. Hypervisor Snapshots
-1. `baseline-lab-app-01`: Baseline after LAB-APP-01 infrastructure provisioning and validation. Before installation of Java, ORDS, and APEX.
+1. `baseline-oracle-linux-8.10-uek-r7`: Base OS and static network configured prior to database installation.
+2. `oracle-xe-21c-functional-baseline`: Full functional installation and validation of Oracle XE.
