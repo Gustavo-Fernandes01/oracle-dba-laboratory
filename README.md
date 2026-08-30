@@ -7,7 +7,7 @@ A repository dedicated to building, testing, measuring, and documenting a profes
 | Server | OS | Resources | Role | Status |
 | :--- | :--- | :--- | :--- | :--- |
 | **`LAB-DB-01`** | Oracle Linux 8.10 (UEK R7) | 1 vCPU / 2 GB RAM | Oracle Database 21c XE | 🟢 Operational |
-| **`LAB-APP-01`** | Oracle Linux 8.10 (UEK R7) | 2 vCPU / 4 GB RAM | Java 21 / ORDS 26.1.1+ / APEX 26.1 | 🟡 Infra Operational / Java 21 Operational (ORDS/APEX Planned) |
+| **LAB-APP-01** | `10.0.0.253` | Oracle Linux 8.10 | 2 vCPU / 4 GB | 🟡 Infra Operational / Java 17 Operational (ORDS/APEX Planned) |
 
 ---
 
