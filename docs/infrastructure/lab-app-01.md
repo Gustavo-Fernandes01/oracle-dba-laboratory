@@ -16,10 +16,10 @@ This virtual machine serves as the Application Server defined in the initial arc
 | **Security** | SELinux: Enforcing \| `firewalld`: Active (Only default SSH validated) |
 
 ## 2. Current Status & Application Stack
-**Infrastructure operational / Java 21 Operational / Application stack in progress.**
-* **Java:** Oracle JDK 21.0.12.1 LTS (Operational)
-* **ORDS:** ORDS 26.1.1+ (Planned)
-* **APEX:** Oracle APEX 26.1 (Planned)
+**Infrastructure operational / Java 17 Operational / Application stack in progress.**
+* **Java:** Oracle JDK 17.0.12 LTS (Operational)
+* **ORDS:** ORDS 23.4 (Planned)
+* **APEX:** Oracle APEX 22.2 (Planned)
 
 *(Note: ORDS and APEX are planned but NOT yet implemented).*
 
@@ -31,4 +31,4 @@ Network connectivity between the Application Server and the Database Server has 
 
 ## 4. Hypervisor Snapshots
 1. `baseline-lab-app-01`: Baseline after LAB-APP-01 infrastructure provisioning and validation. Before installation of Java, ORDS, and APEX.
-2. `java-21-functional-baseline`: Functional baseline after installation and validation of Oracle JDK 21 on LAB-APP-01. OpenJDK removed. Before ORDS installation.
+2. `java-17-functional-baseline`: Functional baseline after installation and validation of Oracle JDK 17 LTS on LAB-APP-01. Before ORDS installation.
